@@ -1,5 +1,6 @@
 package MenuService;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 import DAO.PizzaMemDao;
@@ -11,7 +12,7 @@ import utils.NumberUtils;
 
 public class AjouterPizzaService extends MenuService {
 	
-	public void executeUC(Scanner questionMenu, PizzaMemDao toto) throws StockageException {
+	public void executeUC(Scanner questionMenu, PizzaMemDao toto) throws StockageException, SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("Ajout d'une nouvelle pizza");
 		// Il va falloir cr�er une pizza
@@ -19,18 +20,18 @@ public class AjouterPizzaService extends MenuService {
 		System.out.println("Un nom pour cette pizza ?");
 		String nomPizza = questionMenu.nextLine();
 
-		System.out.println("Ecrivez �galement un raccourci de 3 lettres");
+		System.out.println("Ecrivez également un raccourci de 3 lettres");
 		String raccourci = questionMenu.nextLine();
 		
 		System.out.println(
 				"Quel type voulez-vous pour votre pizza ?");
-		System.out.println("Tapez 1 pour une pizza � la viande");
+		System.out.println("Tapez 1 pour une pizza à la viande");
 		System.out.println("Tapez 2 pour une pizza au poisson");
-		System.out.println("Tapez 3 pour une pizza v�g�tarienne");
+		System.out.println("Tapez 3 pour une pizza végétarienne");
 		String questionTypeSrt = questionMenu.nextLine();
 
 		if (NumberUtils.isNumber(questionTypeSrt) == false) {
-			throw new StockageException("Ceci n'est pas un num�ro, doofus");
+			throw new StockageException("Ceci n'est pas un numéro, doofus");
 		}
 		if (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))) {
 			throw new StockageException("Vous n'avez pas tap� le bon choix");
@@ -40,18 +41,18 @@ public class AjouterPizzaService extends MenuService {
 		String prixStr = questionMenu.nextLine();
 		double prix = Double.parseDouble(prixStr);
 		
-		CategoriePizza categorie = CategoriePizza.VIANDE;
+		CategoriePizza categorie = CategoriePizza.Viande;
 		if (questionTypeSrt.equals("1")) {
-			categorie = CategoriePizza.VIANDE;
+			categorie = CategoriePizza.Viande;
 		} else if (questionTypeSrt.equals("2")) {
-			categorie = CategoriePizza.POISSON;
+			categorie = CategoriePizza.Poisson;
 		} else if (questionTypeSrt.equals("3")) {
-			categorie = CategoriePizza.VEGETARIENNE;
+			categorie = CategoriePizza.Végétarienne;
 		}
 
-		// D�finition de la nouvelle pizza
-		Pizza pizza = new Pizza(raccourci, nomPizza, categorie, prix);
-		toto.saveNewPizza(pizza);
-		System.out.println("Votre pizza a bien �t� ajout�e");
+		// Définition de la nouvelle pizza
+		Pizza nvpizza = new Pizza(raccourci, nomPizza, categorie, prix);
+		toto.saveNewPizza(nvpizza);
+		System.out.println("Votre pizza a bien été ajoutée");
 	}
 }

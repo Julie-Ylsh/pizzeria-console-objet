@@ -1,7 +1,7 @@
 package fr.pizzeria.model;
 
 public enum CategoriePizza {
-	VIANDE("Viande"), POISSON("Poisson"), VEGETARIENNE("V�g�tarienne");
+	Viande("Viande"), Poisson("Poisson"), Végétarienne("Végétarienne");
 	private String nom;
 
 	private CategoriePizza(String nom) {

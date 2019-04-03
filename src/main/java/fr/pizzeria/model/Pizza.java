@@ -1,4 +1,4 @@
-package fr.pizzeria.model;
+ package fr.pizzeria.model;
 
 /**
  * Classe puor faire les pizzas
@@ -49,7 +49,7 @@ public class Pizza {
 	}
 
 	public String toString() {
-		return code + " -> " + libelle + " (" + type + ", " + prix + " �)";
+		return code + " -> " + libelle + " (" + type + ", " + prix + " €)";
 	}
 
 	public void afficherLibelle() {
