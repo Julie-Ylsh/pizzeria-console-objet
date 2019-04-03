@@ -31,10 +31,14 @@ public class SupprimerPizzaService extends MenuService {
 //			}
 //		}
 		System.out.println("Veuillez choisir le code de la pizza à supprimer");
-		String codesup = questionMenu.nextLine();
-		if (codesup.length() != 3) {
-			throw new StockageException("On a dit un code de 3 lettres !");
+		String codesup = null;
+		do {
+			codesup = questionMenu.nextLine();
+			if (codesup.length() != 3)
+				System.out.println("On a dit un code de 3 lettres !");
 		}
+
+		while (codesup.length() != 3);
 		Pizza pizzaSup = dao.findPizzaByCode(codesup);
 		
 		

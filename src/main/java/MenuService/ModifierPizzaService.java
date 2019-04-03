@@ -61,9 +61,12 @@ public class ModifierPizzaService extends MenuService {
 				}
 				if (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))) {
 					System.out.println("Vous n'avez pas tapé le bon choix");
+					System.out.println("Tapez 1 pour une pizza à la viande");
+					System.out.println("Tapez 2 pour une pizza au poisson");
+					System.out.println("Tapez 3 pour une pizza végétarienne");
 				}
 			} while (NumberUtils.isNumber(questionTypeSrt) == false
-					&& (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))));
+					|| (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))));
 
 			System.out.println("A combien voulez-vous vendre cette pizza ? (indiquez un prix sans les euros)");
 
