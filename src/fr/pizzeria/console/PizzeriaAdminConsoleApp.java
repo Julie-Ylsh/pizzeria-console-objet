@@ -1,6 +1,5 @@
 package fr.pizzeria.console;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -9,13 +8,12 @@ import MenuService.AjouterPizzaService;
 import MenuService.ListerPizzasService;
 import MenuService.ModifierPizzaService;
 import MenuService.SupprimerPizzaService;
-import fr.pizzeria.exception.DataAccessException;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
-	public static void main(String[] args) throws SQLException, StockageException {
+	public static void main(String[] args) {
 
 		PizzaMemDao dao = new PizzaMemDao();
 		Scanner questionMenu = new Scanner(System.in);
@@ -26,7 +24,7 @@ public class PizzeriaAdminConsoleApp {
 		System.out.println("***** Pizzeria Administration*****");
 		System.out.println("1. Lister les pizzas");
 		System.out.println("2. Ajouter une nouvelle pizza");
-		System.out.println("3. Mettre à jour une pizza");
+		System.out.println("3. Mettre � jour une pizza");
 		System.out.println("4. Supprimer une pizza");
 		System.out.println("99. Sortir");
 
@@ -38,7 +36,7 @@ public class PizzeriaAdminConsoleApp {
 
 			String z = questionMenu.nextLine();
 			int question = Integer.parseInt(z);
-			try {
+
 			if (question != 99) {
 				fin = false;
 				switch (question) {
@@ -49,16 +47,21 @@ public class PizzeriaAdminConsoleApp {
 					break;
 				case 2:
 					AjouterPizzaService ajout = new AjouterPizzaService();
-					
+					try {
 						ajout.executeUC(questionMenu, dao);
-					
+					} catch (StockageException e3) {
+						// TODO Auto-generated catch block
+						System.out.println(e3.getMessage());
+					}
 
 					break;
 				case 3:
 					ModifierPizzaService modif = new ModifierPizzaService();
-					
+					try {
 						modif.executeUC(questionMenu, dao);
-					
+					} catch (StockageException e2) {
+						System.out.println(e2.getMessage());
+					}
 					break;
 				case 4:
 					SupprimerPizzaService suppression = new SupprimerPizzaService();
@@ -66,7 +69,7 @@ public class PizzeriaAdminConsoleApp {
 					break;
 
 				default:
-					System.out.println("Je n'ai pas compris votre choix, merci de réessayer");
+					System.out.println("Je n'ai pas compris votre choix, merci de r�essayer");
 
 				}
 
@@ -75,10 +78,6 @@ public class PizzeriaAdminConsoleApp {
 			{
 				System.out.println("Au revoir !");
 				fin = true;
-			}
-			
-			} catch (StockageException | DataAccessException e) {
-				System.out.println(e.getMessage());
 			}
 		}
 		questionMenu.close();

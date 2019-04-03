@@ -51,18 +51,19 @@ public class ModifierPizzaService extends MenuService {
 			System.out.println("Tapez 1 pour une pizza à la viande");
 			System.out.println("Tapez 2 pour une pizza au poisson");
 			System.out.println("Tapez 3 pour une pizza végétarienne");
-			
-			String questionTypeSrt = null;
-			do {questionTypeSrt = questionMenu.nextLine();
 
-			if (NumberUtils.isNumber(questionTypeSrt) == false) {
-				throw new StockageException("Ceci n'est pas un numéro, doofus");
-			}
-			if (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))) {
-				throw new StockageException("Vous n'avez pas tapé le bon choix");
-			}
-			}
-			while (NumberUtils.isNumber(questionTypeSrt) == false &&  !(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3")));
+			String questionTypeSrt = null;
+			do {
+				questionTypeSrt = questionMenu.nextLine();
+
+				if (NumberUtils.isNumber(questionTypeSrt) == false) {
+					System.out.println("Ceci n'est pas un numéro, doofus");
+				}
+				if (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))) {
+					System.out.println("Vous n'avez pas tapé le bon choix");
+				}
+			} while (NumberUtils.isNumber(questionTypeSrt) == false
+					&& (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))));
 
 			System.out.println("A combien voulez-vous vendre cette pizza ? (indiquez un prix sans les euros)");
 
@@ -74,12 +75,12 @@ public class ModifierPizzaService extends MenuService {
 				}
 				Double prix2 = Double.parseDouble(prixStr2);
 				if (prix2 < 0) {
-					throw new StockageException("Vous avez entré un chiffre négatif. Mais quel idiot !");
+					System.out.println("Vous avez entré un chiffre négatif. Mais quel idiot !");
 				}
 				if (prix2 > 20) {
-					throw new StockageException("C'est un peu cher pour une pizza quand même !");
+					System.out.println("C'est un peu cher pour une pizza quand même !");
 				}
-			} while (Double.parseDouble(prixStr2) < 20 && Double.parseDouble(prixStr2) > 0);
+			} while (Double.parseDouble(prixStr2) > 20 && Double.parseDouble(prixStr2) < 0);
 			CategoriePizza categorie = CategoriePizza.Viande;
 			if (questionTypeSrt.equals("1")) {
 				categorie = CategoriePizza.Viande;
