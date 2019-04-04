@@ -3,20 +3,21 @@ package MenuService;
 import java.sql.SQLException;
 import java.util.Scanner;
 
+import DAO.PizzaJBADAO;
 import DAO.PizzaMemDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
-import fr.pizzeria.model.ListeCodesPostaux;
+
 import fr.pizzeria.model.Pizza;
 import utils.NumberUtils;
 
 public class AjouterPizzaService extends MenuService {
 	
-	public void executeUC(Scanner questionMenu, PizzaMemDao toto) throws StockageException, SQLException {
+	public void executeUC(Scanner questionMenu, PizzaJBADAO toto) throws StockageException, SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("Ajout d'une nouvelle pizza");
-		// Il va falloir cr�er une pizza
-		// D'abord on r�cup�re les nos de pizza et les code
+		// Il va falloir créer une pizza
+		// D'abord on récupère les nos de pizza et les code
 		System.out.println("Un nom pour cette pizza ?");
 		String nomPizza = questionMenu.nextLine();
 
@@ -34,7 +35,7 @@ public class AjouterPizzaService extends MenuService {
 			throw new StockageException("Ceci n'est pas un numéro, doofus");
 		}
 		if (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))) {
-			throw new StockageException("Vous n'avez pas tap� le bon choix");
+			throw new StockageException("Vous n'avez pas tapé le bon choix");
 		}
 
 		System.out.println("A combien voulez-vous vendre cette pizza ? (indiquez un prix sans les euros)");
@@ -55,4 +56,6 @@ public class AjouterPizzaService extends MenuService {
 		toto.saveNewPizza(nvpizza);
 		System.out.println("Votre pizza a bien été ajoutée");
 	}
+
+	
 }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
+import DAO.PizzaJBADAO;
 import DAO.PizzaMemDao;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.Pizza;
@@ -11,16 +12,18 @@ import fr.pizzeria.model.Pizza;
 public class SupprimerPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner questionMenu, PizzaMemDao dao) throws StockageException, SQLException {
+	public void executeUC(Scanner questionMenu, PizzaJBADAO dao) throws StockageException, SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("Suppression d'une pizza");
 		System.out.println("Liste des pizzas");
 		// Afficher la m�thode de la liste dees pizzas
 		List<Pizza> pizzas2 = dao.findAllPizzas();
 
+		/* Plus besoin de lister les pizzas !
 		for (Pizza pizza : pizzas2) {
 			System.out.println(pizza);
 		}
+		*/
 		
 //Ancien code
 //		for (int i = 0; i < pizzas2.length; i++) {

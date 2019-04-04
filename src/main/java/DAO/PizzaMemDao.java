@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
+
 import fr.pizzeria.exception.DataAccessException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -35,10 +40,9 @@ public class PizzaMemDao implements IPizzaDAO {
 
 	}
 
-
 	@Override
 	public List<Pizza> findAllPizzas() {
-		
+
 		List<Pizza> listePizzas = new ArrayList<>();
 		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
 
@@ -49,7 +53,7 @@ public class PizzaMemDao implements IPizzaDAO {
 				Statement st = uneConnexion.createStatement();
 
 				// Execution d'une requête
-				ResultSet rs = st.executeQuery("SELECT * FROM PIZZA");) {
+				ResultSet rs = st.executeQuery("SELECT * FROM Pizza");) {
 
 			while (rs.next()) {
 				Integer id = rs.getInt("ID");
@@ -62,8 +66,8 @@ public class PizzaMemDao implements IPizzaDAO {
 		} catch (SQLException e) {
 			// TODO
 		}
-		return listePizzas;
 
+		return listePizzas;
 	}
 
 	@Override
@@ -84,7 +88,7 @@ public class PizzaMemDao implements IPizzaDAO {
 		String requete = "\"" + codePizza + "\"" + ", " + "\"" + name + "\"" + ", " + "\"" + categoriePizza + "\""
 				+ ", " + price;
 		System.out.println(requete);
-		st.executeUpdate("INSERT INTO PIZZA (CODE_PIZZA, NAME, CATEGORIE_PIZZA, PRIX) VALUES (" + requete + ")");
+		st.executeUpdate("INSERT INTO Pizza (CODE_PIZZA, NAME, CATEGORIE_PIZZA, PRIX) VALUES (" + requete + ")");
 
 		// fermeture des requêtes
 		st.close();
@@ -113,7 +117,7 @@ public class PizzaMemDao implements IPizzaDAO {
 		String name = pizzaC.getLibelle();
 		String categoriePizza = pizzaC.getType().getNom();
 		Double price = pizzaC.getPrix();
-		st.executeUpdate("UPDATE PIZZA SET CODE_PIZZA= '" + codePizza2 + "', NAME='" + name + "', CATEGORIE_PIZZA='"
+		st.executeUpdate("UPDATE Pizza SET CODE_PIZZA= '" + codePizza2 + "', NAME='" + name + "', CATEGORIE_PIZZA='"
 				+ categoriePizza + "', PRIX= " + price + " WHERE CODE_PIZZA='" + codePizza + "'");
 
 		// fermeture des requêtes
@@ -136,7 +140,7 @@ public class PizzaMemDao implements IPizzaDAO {
 
 		// Connexion au serveur
 		Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge", "YgTkfeGiiheosyfYUf9F");
-		PreparedStatement st = uneConnexion.prepareStatement("DELETE FROM PIZZA WHERE CODE_PIZZA = ?");
+		PreparedStatement st = uneConnexion.prepareStatement("DELETE FROM Pizza WHERE CODE_PIZZA = ?");
 		st.setString(1, codePizza);
 
 		// Execution d'une
@@ -161,7 +165,7 @@ public class PizzaMemDao implements IPizzaDAO {
 
 		// Execution d'une requête
 
-		ResultSet rs = st.executeQuery("SELECT * FROM PIZZA WHERE CODE_PIZZA = '" + codePizza + "'");
+		ResultSet rs = st.executeQuery("SELECT * FROM Pizza WHERE CODE_PIZZA = '" + codePizza + "'");
 		rs.next();
 		Integer id = rs.getInt("ID");
 		String codePizza2 = rs.getString("CODE_PIZZA");

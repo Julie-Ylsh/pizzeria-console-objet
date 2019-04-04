@@ -4,7 +4,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import DAO.PizzaMemDao;
+import DAO.PizzaJBADAO;
+
 import MenuService.AjouterPizzaService;
 import MenuService.ListerPizzasService;
 import MenuService.ModifierPizzaService;
@@ -17,7 +18,7 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) throws SQLException, StockageException {
 
-		PizzaMemDao dao = new PizzaMemDao();
+		PizzaJBADAO dao = new PizzaJBADAO();
 		Scanner questionMenu = new Scanner(System.in);
 
 		int cpt = 8;
