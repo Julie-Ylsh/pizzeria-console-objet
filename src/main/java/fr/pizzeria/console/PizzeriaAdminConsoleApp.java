@@ -1,24 +1,21 @@
 package fr.pizzeria.console;
 
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.Scanner;
 
-import DAO.PizzaJBADAO;
-
+import DAO.PizzaMemDao;
 import MenuService.AjouterPizzaService;
 import MenuService.ListerPizzasService;
 import MenuService.ModifierPizzaService;
 import MenuService.SupprimerPizzaService;
 import fr.pizzeria.exception.DataAccessException;
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.model.Pizza;
 
 public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) throws SQLException, StockageException {
 
-		PizzaJBADAO dao = new PizzaJBADAO();
+		PizzaMemDao dao = new PizzaMemDao();
 		Scanner questionMenu = new Scanner(System.in);
 
 		int cpt = 8;
@@ -45,25 +42,25 @@ public class PizzeriaAdminConsoleApp {
 				switch (question) {
 				case 1:
 					ListerPizzasService liste = new ListerPizzasService();
-					liste.executeUC(questionMenu, dao);
+					liste.executeUC(questionMenu);
 
 					break;
 				case 2:
 					AjouterPizzaService ajout = new AjouterPizzaService();
 					
-						ajout.executeUC(questionMenu, dao);
+						ajout.executeUC(questionMenu);
 					
 
 					break;
 				case 3:
 					ModifierPizzaService modif = new ModifierPizzaService();
 					
-						modif.executeUC(questionMenu, dao);
+						modif.executeUC(questionMenu);
 					
 					break;
 				case 4:
 					SupprimerPizzaService suppression = new SupprimerPizzaService();
-					suppression.executeUC(questionMenu, dao);
+					suppression.executeUC(questionMenu);
 					break;
 
 				default:

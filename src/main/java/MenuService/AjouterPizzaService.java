@@ -3,7 +3,6 @@ package MenuService;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import DAO.PizzaJBADAO;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -11,7 +10,7 @@ import utils.NumberUtils;
 
 public class AjouterPizzaService extends MenuService {
 
-	public void executeUC(Scanner questionMenu, PizzaJBADAO toto) throws StockageException, SQLException {
+	public void executeUC(Scanner questionMenu) throws StockageException, SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("Ajout d'une nouvelle pizza");
 		// Il va falloir créer une pizza
@@ -50,7 +49,7 @@ public class AjouterPizzaService extends MenuService {
 
 		// Définition de la nouvelle pizza
 		Pizza nvpizza = new Pizza(raccourci, nomPizza, categorie, prix);
-		toto.saveNewPizza(nvpizza);
+		gestionnairePizza.saveNewPizza(nvpizza);
 		System.out.println("Votre pizza a bien été ajoutée");
 	}
 

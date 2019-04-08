@@ -3,9 +3,6 @@ package DAO;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
@@ -15,7 +12,7 @@ import fr.pizzeria.model.Pizza;
  */
 public class PizzaMemDao implements IPizzaDAO {
 	// private Pizza [] tabPizza;
-	private List<Pizza> tabPizza;
+	public List<Pizza> tabPizza;
 
 	public PizzaMemDao() {
 		tabPizza = new ArrayList<Pizza>();
@@ -46,23 +43,6 @@ public class PizzaMemDao implements IPizzaDAO {
 	public void saveNewPizza(Pizza pizza) {
 		tabPizza.add(pizza);
 	}
-	@Test
-	public void testSaveNew() {
-		PizzaMemDao dao = new PizzaMemDao();
-		Pizza pizzaAjout = new Pizza("JOL", "Julietheverybest", CategoriePizza.Viande, 12.50);
-
-		List<Pizza> listePizzaTest = dao.findAllPizzas();
-
-		Integer taille = listePizzaTest.size();
-		System.out.println(listePizzaTest.size());
-
-		dao.saveNewPizza(pizzaAjout);
-		Integer tailleArrivee = listePizzaTest.size();
-		System.out.println(listePizzaTest.size());
-
-		Assert.assertNotEquals(taille, tailleArrivee);
-
-	}
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) {
@@ -76,17 +56,6 @@ public class PizzaMemDao implements IPizzaDAO {
 				}
 			}
 		}
-	}
-
-	@Test
-	public void testUpdatePizza() {
-		PizzaMemDao dao = new PizzaMemDao();
-		List<Pizza> listePizzaTest = findAllPizzas();
-		Pizza pizzaAjout = new Pizza("JUL", "Juliethebest", CategoriePizza.Viande, 12.50);
-
-		dao.updatePizza("PEP", pizzaAjout);
-		Assert.assertNotEquals(tabPizza.get(0), pizzaAjout);
-
 	}
 
 	@Override
@@ -105,23 +74,6 @@ public class PizzaMemDao implements IPizzaDAO {
 		}
 	}
 
-	@Test
-	public void testDelete() {
-		PizzaMemDao dao = new PizzaMemDao();
-
-		List<Pizza> listePizzaTest = dao.findAllPizzas();
-
-		Integer taille = listePizzaTest.size();
-		System.out.println(listePizzaTest.size());
-
-		dao.deletePizza("PEP");
-		Integer tailleArrivee = listePizzaTest.size();
-		System.out.println(listePizzaTest.size());
-
-		Assert.assertNotEquals(taille, tailleArrivee);
-
-	}
-
 	@Override
 	public Pizza findPizzaByCode(String codePizza) {
 		for (Pizza pizza : tabPizza) {
@@ -131,19 +83,6 @@ public class PizzaMemDao implements IPizzaDAO {
 		}
 
 		return null;
-	}
-
-	@Test
-	public void testFindPizza() {
-		PizzaMemDao dao = new PizzaMemDao();
-
-		List<Pizza> listePizzaTest = findAllPizzas();
-
-		Pizza pizzaTrouvee = findPizzaByCode("PEP");
-
-		Assert.assertEquals(tabPizza.get(0), pizzaTrouvee);
-		;
-
 	}
 
 }

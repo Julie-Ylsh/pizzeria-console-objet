@@ -3,7 +3,6 @@ package MenuService;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import DAO.PizzaJBADAO;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -12,7 +11,7 @@ import utils.NumberUtils;
 public class ModifierPizzaService extends MenuService {
 
 	@Override
-	public void executeUC(Scanner questionMenu, PizzaJBADAO dao) throws StockageException, SQLException {
+	public void executeUC(Scanner questionMenu) throws StockageException, SQLException {
 		// TODO Auto-generated method stub
 		System.out.println("Mise à jour d'une pizza");
 		System.out.println("Veuillez choisir le code d'une pizza à modifier");
@@ -25,7 +24,7 @@ public class ModifierPizzaService extends MenuService {
 
 		while (code.length() != 3);
 
-		Pizza pizzaModif = dao.findPizzaByCode(code);
+		Pizza pizzaModif = gestionnairePizza.findPizzaByCode(code);
 
 		if (pizzaModif != null) {
 			System.out.println("La pizza que vous voulez modifier est la : ");
@@ -95,7 +94,9 @@ public class ModifierPizzaService extends MenuService {
 
 
 			Pizza pizzaC = new Pizza(raccourci2, nomPizza2, categorie, Double.parseDouble(prixStr2));
-			dao.updatePizza(code, pizzaC);
+			
+				gestionnairePizza.updatePizza(code, pizzaC);
+			
 			System.out.println("Votre pizza a bien été modifiée");
 		} else
 			System.out.println("Le code que vous avez entré ne correspond à rien");
