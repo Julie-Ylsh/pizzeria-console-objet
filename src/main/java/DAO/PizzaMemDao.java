@@ -1,184 +1,149 @@
 package DAO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import org.junit.Assert;
+import org.junit.Test;
 
-import fr.pizzeria.exception.DataAccessException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 
+/**
+ * @author BIRABEN-BIANCHI Hugo
+ *
+ */
 public class PizzaMemDao implements IPizzaDAO {
+	// private Pizza [] tabPizza;
+	private List<Pizza> tabPizza;
 
-	public <TYPESORTIE> TYPESORTIE executerSQL(Function<Connection, TYPESORTIE> fn) {
-		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
-
-		try (
-				// Connexion au serveur
-				Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge",
-						"YgTkfeGiiheosyfYUf9F");) {
-			return fn.apply(uneConnexion);
-		} catch (SQLException e) {
-			throw new DataAccessException("Problème de communication avec la base de données", e);
-		}
-
+	public PizzaMemDao() {
+		tabPizza = new ArrayList<Pizza>();
+		initialisation();
 	}
 
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		Class.forName("com.mysql.jdbc.Driver");
-
+	public void initialisation() {
+		if (tabPizza.size() < 8) {
+			tabPizza.add(new Pizza("PEP", "Pépéroni", CategoriePizza.Viande, 12.50));
+			tabPizza.add(new Pizza("MAR", "Margherita", CategoriePizza.Végétarienne, 14.00));
+			tabPizza.add(new Pizza("REIN", "La Reine", CategoriePizza.Viande, 11.50));
+			tabPizza.add(new Pizza("FRO", "La 4 Fromage", CategoriePizza.Végétarienne, 12.00));
+			tabPizza.add(new Pizza("CAN", "La cannibale", CategoriePizza.Viande, 12.50));
+			tabPizza.add(new Pizza("SAV", "La savoyarde", CategoriePizza.Viande, 13.00));
+			tabPizza.add(new Pizza("ORI", "L’orientale", CategoriePizza.Viande, 13.50));
+			tabPizza.add(new Pizza("IND", "L’indienne", CategoriePizza.Poisson, 14.00));
+		} else {
+			System.out.println("Taille du tableau insuffisante pour l'initialisation !");
+		}
 	}
 
 	@Override
 	public List<Pizza> findAllPizzas() {
+		return tabPizza;
+	}
 
-		List<Pizza> listePizzas = new ArrayList<>();
-		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
+	@Override
+	public void saveNewPizza(Pizza pizza) {
+		tabPizza.add(pizza);
+	}
+	@Test
+	public void testSaveNew() {
+		PizzaMemDao dao = new PizzaMemDao();
+		Pizza pizzaAjout = new Pizza("JOL", "Julietheverybest", CategoriePizza.Viande, 12.50);
 
-		try (
-				// Connexion au serveur
-				Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge",
-						"YgTkfeGiiheosyfYUf9F");
-				Statement st = uneConnexion.createStatement();
+		List<Pizza> listePizzaTest = dao.findAllPizzas();
 
-				// Execution d'une requête
-				ResultSet rs = st.executeQuery("SELECT * FROM Pizza");) {
+		Integer taille = listePizzaTest.size();
+		System.out.println(listePizzaTest.size());
 
-			while (rs.next()) {
-				Integer id = rs.getInt("ID");
-				String codePizza = rs.getString("CODE_PIZZA");
-				String name = rs.getString("NAME");
-				String categoriePizza = rs.getString("CATEGORIE_PIZZA");
-				Double price = rs.getDouble("PRIX");
-				listePizzas.add(new Pizza(id, codePizza, name, CategoriePizza.valueOf(categoriePizza), price));
+		dao.saveNewPizza(pizzaAjout);
+		Integer tailleArrivee = listePizzaTest.size();
+		System.out.println(listePizzaTest.size());
+
+		Assert.assertNotEquals(taille, tailleArrivee);
+
+	}
+
+	@Override
+	public void updatePizza(String codePizza, Pizza pizza) {
+		for (Pizza p : tabPizza) {
+			if (p != null) {
+				if (p.getCode().equals(codePizza)) {
+					p.setCode(pizza.getCode());
+					p.setLibelle(pizza.getLibelle());
+					p.setPrix(pizza.getPrix());
+					p.setType(pizza.getType());
+				}
 			}
-		} catch (SQLException e) {
-			// TODO
+		}
+	}
+
+	@Test
+	public void testUpdatePizza() {
+		PizzaMemDao dao = new PizzaMemDao();
+		List<Pizza> listePizzaTest = findAllPizzas();
+		Pizza pizzaAjout = new Pizza("JUL", "Juliethebest", CategoriePizza.Viande, 12.50);
+
+		dao.updatePizza("PEP", pizzaAjout);
+		Assert.assertNotEquals(tabPizza.get(0), pizzaAjout);
+
+	}
+
+	@Override
+	public void deletePizza(String codePizza) {
+		for (Pizza p : tabPizza) {
+			if (p.getCode().equals(codePizza)) {
+				tabPizza.remove(p);
+				break;
+			}
 		}
 
-		return listePizzas;
+		for (int i = 0; i < tabPizza.size(); i++) {
+			if (tabPizza.get(i).getId() != i) {
+				tabPizza.get(i).setId(i);
+			}
+		}
 	}
 
-	@Override
-	public void saveNewPizza(Pizza nvPizza) throws SQLException {
-		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
+	@Test
+	public void testDelete() {
+		PizzaMemDao dao = new PizzaMemDao();
 
-		// Connexion au serveur
-		Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge", "YgTkfeGiiheosyfYUf9F");
-		Statement st = uneConnexion.createStatement();
+		List<Pizza> listePizzaTest = dao.findAllPizzas();
 
-		// Rcupération des infos données de l'utilisateur et éxecution d'une
-		// requête
-		// Pizza pizzaAjout = nvPizza;
-		String codePizza = nvPizza.getCode();
-		String name = nvPizza.getLibelle();
-		String categoriePizza = nvPizza.getType().getNom();
-		Double price = nvPizza.getPrix();
-		String requete = "\"" + codePizza + "\"" + ", " + "\"" + name + "\"" + ", " + "\"" + categoriePizza + "\""
-				+ ", " + price;
-		System.out.println(requete);
-		st.executeUpdate("INSERT INTO Pizza (CODE_PIZZA, NAME, CATEGORIE_PIZZA, PRIX) VALUES (" + requete + ")");
+		Integer taille = listePizzaTest.size();
+		System.out.println(listePizzaTest.size());
 
-		// fermeture des requêtes
-		st.close();
-		uneConnexion.close();
+		dao.deletePizza("PEP");
+		Integer tailleArrivee = listePizzaTest.size();
+		System.out.println(listePizzaTest.size());
 
-	}
-
-	/*
-	 * Ancien code for (int i = 0; i < listePizzas.length; i++) { if
-	 * (listePizzas[i] == null) { listePizzas[i] = nvPizza; break;
-	 */
-
-	@Override
-	public void updatePizza(String codePizza, Pizza pizzaC) throws SQLException {
-
-		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
-
-		// Connexion au serveur
-		Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge", "YgTkfeGiiheosyfYUf9F");
-		Statement st = uneConnexion.createStatement();
-
-		// Rcupération des infos données de l'utilisateur et éxecution d'une
-		// requête
-		// Pizza pizzaAjout = nvPizza;
-		String codePizza2 = pizzaC.getCode();
-		String name = pizzaC.getLibelle();
-		String categoriePizza = pizzaC.getType().getNom();
-		Double price = pizzaC.getPrix();
-		st.executeUpdate("UPDATE Pizza SET CODE_PIZZA= '" + codePizza2 + "', NAME='" + name + "', CATEGORIE_PIZZA='"
-				+ categoriePizza + "', PRIX= " + price + " WHERE CODE_PIZZA='" + codePizza + "'");
-
-		// fermeture des requêtes
-		st.close();
-		uneConnexion.close();
-
-		/*
-		 * Ancienne méthode for (int i = 0; i < listePizzas.length; i++) { // if
-		 * (listePizzas[i] != null &&
-		 * listePizzas[i].getCode().equals(codePizza)) { // listePizzas[i] =
-		 * pizzaC; // } // }
-		 */
+		Assert.assertNotEquals(taille, tailleArrivee);
 
 	}
 
 	@Override
-	public void deletePizza(String codePizza) throws SQLException {
+	public Pizza findPizzaByCode(String codePizza) {
+		for (Pizza pizza : tabPizza) {
+			if (pizza.getCode().equals(codePizza.toUpperCase())) {
+				return pizza;
+			}
+		}
 
-		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
+		return null;
+	}
 
-		// Connexion au serveur
-		Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge", "YgTkfeGiiheosyfYUf9F");
-		PreparedStatement st = uneConnexion.prepareStatement("DELETE FROM Pizza WHERE CODE_PIZZA = ?");
-		st.setString(1, codePizza);
+	@Test
+	public void testFindPizza() {
+		PizzaMemDao dao = new PizzaMemDao();
 
-		// Execution d'une
-		// requête
+		List<Pizza> listePizzaTest = findAllPizzas();
 
-		st.executeUpdate();
+		Pizza pizzaTrouvee = findPizzaByCode("PEP");
 
-		// fermeture des requêtes
-		st.close();
-		uneConnexion.close();
+		Assert.assertEquals(tabPizza.get(0), pizzaTrouvee);
+		;
 
 	}
 
-	@Override
-	public Pizza findPizzaByCode(String codePizza) throws SQLException {
-
-		String jdbcUrl = "jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false";
-
-		// Connexion au serveur
-		Connection uneConnexion = DriverManager.getConnection(jdbcUrl, "u1hfeof3sqlpi6ge", "YgTkfeGiiheosyfYUf9F");
-		Statement st = uneConnexion.createStatement();
-
-		// Execution d'une requête
-
-		ResultSet rs = st.executeQuery("SELECT * FROM Pizza WHERE CODE_PIZZA = '" + codePizza + "'");
-		rs.next();
-		Integer id = rs.getInt("ID");
-		String codePizza2 = rs.getString("CODE_PIZZA");
-		String name = rs.getString("NAME");
-		String categoriePizza = rs.getString("CATEGORIE_PIZZA");
-		Double price = rs.getDouble("PRIX");
-		Pizza pizzaTrouvee = new Pizza(id, codePizza2, name, CategoriePizza.valueOf(categoriePizza), price);
-
-		// fermeture des requêtes
-		st.close();
-		rs.close();
-		uneConnexion.close();
-
-		return pizzaTrouvee;
-	}
 }
