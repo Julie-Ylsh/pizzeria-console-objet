@@ -2,7 +2,6 @@ package DAO;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -48,6 +47,8 @@ public class PizzaJBADAO implements IPizzaDAO {
 		emf.close();
 
 	}
+	
+
 
 	@Override
 	public void updatePizza(String codePizza, Pizza pizza) throws SQLException {

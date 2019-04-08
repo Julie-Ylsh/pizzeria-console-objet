@@ -1,0 +1,92 @@
+10:42:04.906 [main] INFO  o.h.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [name: pizzeria]
+10:42:05.005 [main] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.4.2.Final}
+10:42:05.135 [main] INFO  o.h.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+10:42:05.330 [main] WARN  o.hibernate.orm.connections.pooling -
+				HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+10:42:05.335 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false]
+10:42:05.336 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001001: Connection properties: {user=u1hfeof3sqlpi6ge, password=****}
+10:42:05.336 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001003: Autocommit mode: false
+10:42:05.339 [main] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl -
+				HHH000115: Hibernate connection pool size: 20 (min=1)
+10:42:05.566 [main] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+10:42:06.141 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -
+				HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+10:42:06.367 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001008: Cleaning up connection pool [jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false]
+10:43:51.565 [main] INFO  fr.pizzeria.console.LogExemple -
+				L'application vient de démarrer.
+10:43:51.565 [main] INFO  fr.pizzeria.console.LogExemple -
+				L'application vient de démarrer.
+10:44:59.352 [main] WARN  fr.pizzeria.console.LogExemple -
+				L'application vient de démarrer.
+10:44:59.352 [main] WARN  fr.pizzeria.console.LogExemple -
+				L'application vient de démarrer.
+15:21:42.580 [main] INFO  o.h.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [name: pizzeria]
+15:21:42.672 [main] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.4.2.Final}
+15:21:42.809 [main] INFO  o.h.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+15:21:43.011 [main] WARN  o.hibernate.orm.connections.pooling -
+				HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+15:21:43.017 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001005: using driver [com.mysql.jdbc.Driver] at URL [jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false]
+15:21:43.017 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001001: Connection properties: {user=u1hfeof3sqlpi6ge, password=****}
+15:21:43.017 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001003: Autocommit mode: false
+15:21:43.020 [main] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl -
+				HHH000115: Hibernate connection pool size: 20 (min=1)
+15:21:43.334 [main] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+15:21:43.939 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -
+				HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:22:57.274 [main] INFO  o.h.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [name: pizzeria]
+15:22:57.365 [main] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.4.2.Final}
+15:22:57.503 [main] INFO  o.h.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+15:22:57.702 [main] WARN  o.hibernate.orm.connections.pooling -
+				HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+15:22:57.709 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false]
+15:22:57.709 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001001: Connection properties: {user=u1hfeof3sqlpi6ge, password=****}
+15:22:57.709 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001003: Autocommit mode: false
+15:22:57.712 [main] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl -
+				HHH000115: Hibernate connection pool size: 20 (min=1)
+15:22:57.967 [main] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+15:22:58.552 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -
+				HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:23:55.428 [main] INFO  o.h.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [name: pizzeria]
+15:23:55.517 [main] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.4.2.Final}
+15:23:55.653 [main] INFO  o.h.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.1.0.Final}
+15:23:55.850 [main] WARN  o.hibernate.orm.connections.pooling -
+				HHH10001002: Using Hibernate built-in connection pool (not for production use!)
+15:23:55.856 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001005: using driver [com.mysql.cj.jdbc.Driver] at URL [jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false]
+15:23:55.856 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001001: Connection properties: {user=u1hfeof3sqlpi6ge, password=****}
+15:23:55.856 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001003: Autocommit mode: false
+15:23:55.859 [main] INFO  o.h.e.j.c.i.DriverManagerConnectionProviderImpl -
+				HHH000115: Hibernate connection pool size: 20 (min=1)
+15:23:56.104 [main] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+15:23:56.692 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator -
+				HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+15:23:57.020 [main] INFO  o.hibernate.orm.connections.pooling -
+				HHH10001008: Cleaning up connection pool [jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false]

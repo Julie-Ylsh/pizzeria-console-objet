@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import DAO.PizzaJBADAO;
 import fr.pizzeria.exception.StockageException;
-import fr.pizzeria.exception.UpdatePizzaException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
 import utils.NumberUtils;
@@ -67,6 +66,15 @@ public class ModifierPizzaService extends MenuService {
 				}
 			} while (NumberUtils.isNumber(questionTypeSrt) == false
 					|| (!(questionTypeSrt.equals("1") || questionTypeSrt.equals("2") || questionTypeSrt.equals("3"))));
+			
+			CategoriePizza categorie = CategoriePizza.Viande;
+			if (questionTypeSrt.equals("1")) {
+				categorie = CategoriePizza.Viande;
+			} else if (questionTypeSrt.equals("2")) {
+				categorie = CategoriePizza.Poisson;
+			} else if (questionTypeSrt.equals("3")) {
+				categorie = CategoriePizza.Végétarienne;
+			}
 
 			System.out.println("A combien voulez-vous vendre cette pizza ? (indiquez un prix sans les euros)");
 
@@ -84,14 +92,7 @@ public class ModifierPizzaService extends MenuService {
 					System.out.println("C'est un peu cher pour une pizza quand même !");
 				}
 			} while (Double.parseDouble(prixStr2) > 20 && Double.parseDouble(prixStr2) < 0);
-			CategoriePizza categorie = CategoriePizza.Viande;
-			if (questionTypeSrt.equals("1")) {
-				categorie = CategoriePizza.Viande;
-			} else if (questionTypeSrt.equals("2")) {
-				categorie = CategoriePizza.Poisson;
-			} else if (questionTypeSrt.equals("3")) {
-				categorie = CategoriePizza.Végétarienne;
-			}
+
 
 			Pizza pizzaC = new Pizza(raccourci2, nomPizza2, categorie, Double.parseDouble(prixStr2));
 			dao.updatePizza(code, pizzaC);

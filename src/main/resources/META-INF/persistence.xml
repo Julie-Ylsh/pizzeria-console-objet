@@ -11,7 +11,7 @@
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://bxtb5p7tvljidmqpfkpw-mysql.services.clever-cloud.com:3306/bxtb5p7tvljidmqpfkpw?useSSL=false" />
 			<property name="javax.persistence.jdbc.user" value="u1hfeof3sqlpi6ge" />
 			<property name="javax.persistence.jdbc.password" value="YgTkfeGiiheosyfYUf9F" />
-			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
 		</properties>
 	</persistence-unit>
 </persistence>
