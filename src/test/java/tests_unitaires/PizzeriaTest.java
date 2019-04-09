@@ -134,14 +134,14 @@ public class PizzeriaTest {
 
 	}
 
-	@Test // (expected = ModifierPizzaService.class)
+	@Test 
 	public void testSupprimerPizzaServiceMockito() throws StockageException, SQLException {
 		IPizzaDAO mockedDao = Mockito.mock(IPizzaDAO.class);
 		Mockito.doThrow(new StockageException()).when(mockedDao).deletePizza(Mockito.anyString());
 
 	}
 
-	@Test // (expected = ModifierPizzaService.class)
+	@Test 
 	public void  testFindAllPizzas() throws StockageException, SQLException {
 		IPizzaDAO mockedDao = Mockito.mock(IPizzaDAO.class);
 		Mockito.when(mockedDao.findAllPizzas()).thenReturn(new ArrayList<Pizza>());
