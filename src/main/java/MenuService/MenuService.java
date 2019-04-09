@@ -13,4 +13,12 @@ public abstract class MenuService {
 
 	public abstract void executeUC(Scanner scanner) throws StockageException, SQLException;
 
+	public static IPizzaDAO getGestionnairePizza() {
+		return gestionnairePizza;
+	}
+
+	public static void setGestionnairePizza(IPizzaDAO gestionnairePizza) {
+		MenuService.gestionnairePizza = gestionnairePizza;
+	}
+
 }

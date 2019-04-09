@@ -3,6 +3,7 @@ package tests_unitaires;
 import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,12 +11,15 @@ import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
+import org.mockito.Mockito;
 
+import DAO.IPizzaDAO;
 //import fr.pizzeria.model.CategoriePizza;
 //import fr.pizzeria.model.Pizza;
 import DAO.PizzaMemDao;
 import MenuService.AjouterPizzaService;
 import MenuService.MenuService;
+import MenuService.SupprimerPizzaService;
 import fr.pizzeria.exception.StockageException;
 import fr.pizzeria.model.CategoriePizza;
 import fr.pizzeria.model.Pizza;
@@ -89,8 +93,6 @@ public class PizzeriaTest {
 
 	@Test
 	public void testAjouterPizzaService() throws StockageException, SQLException {
-		PizzaMemDao dao = new PizzaMemDao();
-
 		// J'alimente le mock avec une nouvelle pizza
 		// La nouvelle pizza sera de type : "JOL", "Julietheverybest",
 		// CategoriePizza.Viande, 12.50);
@@ -98,28 +100,25 @@ public class PizzeriaTest {
 		systemInMock.provideLines("Julietheverybest", "JOL", "1", "12.5");
 		AjouterPizzaService serv = new AjouterPizzaService();
 
-
 		serv.executeUC(new Scanner(System.in));
+		System.out.println(MenuService.getGestionnairePizza().findAllPizzas());
 
+		Assert.assertEquals(
+				MenuService.getGestionnairePizza().findAllPizzas()
+						.get(MenuService.getGestionnairePizza().findAllPizzas().size() - 1).toString(),
+				pizzaAVerifier.toString());
 
-		Assert.assertEquals(MenuService.gestionnairePizza.findAllPizzas().get(MenuService.gestionnairePizza.findAllPizzas().size()), pizzaAVerifier);
-		
 	}
 
 	@Test
 	public void testSupprimerPizzaService() {
-		PizzaMemDao dao = new PizzaMemDao();
 
-		List<Pizza> listePizzaTest = dao.findAllPizzas();
+		List<Pizza> listePizzaTest = MenuService.getGestionnairePizza().findAllPizzas();
 		Integer taille = listePizzaTest.size();
 		System.out.println(listePizzaTest.size());
 
-		// J'alimente le mock avec une nouvelle pizza
-		// La nouvelle pizza sera de type : "JOL", "Julietheverybest",
-		// CategoriePizza.Viande, 12.50);
-
-		systemInMock.provideLines("Julietheverybest", "JOL", "1", "12.5");
-		AjouterPizzaService serv = new AjouterPizzaService();
+		systemInMock.provideLines("PEP");
+		SupprimerPizzaService serv = new SupprimerPizzaService();
 		try {
 			serv.executeUC(new Scanner(System.in));
 		} catch (StockageException | SQLException e) {
@@ -133,5 +132,18 @@ public class PizzeriaTest {
 
 		Assert.assertNotEquals(taille, tailleArrivee);
 
+	}
+
+	@Test // (expected = ModifierPizzaService.class)
+	public void testSupprimerPizzaServiceMockito() throws StockageException, SQLException {
+		IPizzaDAO mockedDao = Mockito.mock(IPizzaDAO.class);
+		Mockito.doThrow(new StockageException()).when(mockedDao).deletePizza(Mockito.anyString());
+
+	}
+
+	@Test // (expected = ModifierPizzaService.class)
+	public void  testFindAllPizzas() throws StockageException, SQLException {
+		IPizzaDAO mockedDao = Mockito.mock(IPizzaDAO.class);
+		Mockito.when(mockedDao.findAllPizzas()).thenReturn(new ArrayList<Pizza>());
 	}
 }
