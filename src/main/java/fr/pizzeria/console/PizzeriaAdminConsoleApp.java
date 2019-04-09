@@ -3,7 +3,7 @@ package fr.pizzeria.console;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import DAO.PizzaMemDao;
+import DAO.PizzaJBADAO;
 import MenuService.AjouterPizzaService;
 import MenuService.ListerPizzasService;
 import MenuService.ModifierPizzaService;
@@ -15,24 +15,25 @@ public class PizzeriaAdminConsoleApp {
 
 	public static void main(String[] args) throws SQLException, StockageException {
 
-		PizzaMemDao dao = new PizzaMemDao();
+		PizzaJBADAO dao = new PizzaJBADAO();
 		Scanner questionMenu = new Scanner(System.in);
 
 		int cpt = 8;
 
 		// Afficher les options du menu
 		System.out.println("***** Pizzeria Administration*****");
-		System.out.println("1. Lister les pizzas");
-		System.out.println("2. Ajouter une nouvelle pizza");
-		System.out.println("3. Mettre à jour une pizza");
-		System.out.println("4. Supprimer une pizza");
-		System.out.println("99. Sortir");
+		
 
 		boolean fin = false;
 		while (fin == false) {
 
 			// On demande quelle action l'utilisateur veut faire
-			System.out.println("Menu principal. Veuillez faire votre choix");
+			System.out.println("/n" + "Menu principal. Veuillez faire votre choix");
+			System.out.println("1. Lister les pizzas");
+			System.out.println("2. Ajouter une nouvelle pizza");
+			System.out.println("3. Mettre à jour une pizza");
+			System.out.println("4. Supprimer une pizza");
+			System.out.println("99. Sortir");
 
 			String z = questionMenu.nextLine();
 			int question = Integer.parseInt(z);
