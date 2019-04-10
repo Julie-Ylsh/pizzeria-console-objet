@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Julie's Pizza - liste pizzas</title>
+</head>
+
+<body>
+
+	<header>
+
+		<h1>Liste des pizzas</h1>
+		<a href="#ajouterPizza">Veuillez cliquer ici pour ajouter une
+			nouvelle pizza</a> <br /> <br /> <a href="#modifPizza">Pour
+			modifier ou supprimer une pizza, veuillez cliquer ici</a> <br /> <br />
+
+	</header>
+
+	<section id="tableauPizzas">
+
+		<table>
+			<tr>
+				<td width="30"><b>Id.</b></td>
+				<td align="left" width="150"><b>Libellé</b></td>
+				<td width="100"><b>Référence</b></td>
+				<td width="120"><b>Prix</b></td>
+				<td width="150" align="center"><b>Photo</b></td>
+				<td width="120"><b>Action</b></td>
+			</tr>
+
+			<tr>
+				<td rowspan="2"><a href="pizza-reine.html" target="_blank ">1</a></td>
+				<td rowspan="2">Reine</td>
+				<td rowspan="2">PREI</td>
+				<td rowspan="2">9,99 €</td>
+				<td align="center" rowspan="2"><img src="img/reine.jpg"
+					width="200" /></td>
+				<td><a href=#>Modifier</a></td>
+
+			</tr>
+
+			<tr>
+				<td valign="top"><a href=#>Supprimer</a></td>
+			</tr>
+
+
+			<tr>
+				<td rowspan="2">2</td>
+				<td rowspan="2">Regina</td>
+				<td rowspan="2">PREG</td>
+				<td rowspan="2">9,00 €</td>
+				<td align="center" rowspan="2"><img src="img/regina.jpg"
+					width="200" /></td>
+				<td><a href=#>Modifier</a></td>
+			</tr>
+
+			<tr>
+				<td valign="top"><a href=#>Supprimer</a></td>
+			</tr>
+
+
+			<tr>
+				<td rowspan="2">3</td>
+				<td rowspan="2">Napolitaine</td>
+				<td rowspan="2">PNAP</td>
+				<td rowspan="2">9,99 €</td>
+				<td rowspan="2" align="center"><img src="img/napolitaine.jpg"
+					width="200" /></td>
+				<td><a href=#>Modifier</a></td>
+			</tr>
+			<tr>
+				<td valign="top"><a href=#>Supprimer</a></td>
+			</tr>
+
+			<tr>
+				<td rowspan="2">4</td>
+				<td rowspan="2">4 fromages</td>
+				<td rowspan="2">FRP</td>
+				<td rowspan="2">9,99 €</td>
+				<td align="center" rowspan="2"><img src="img/4_fromages.jpg"
+					width="200" /></td>
+				<td><a href=#>Modifier</a></td>
+			</tr>
+			<tr>
+				<td valign="top"><a href=#>Supprimer</a></td>
+			</tr>
+
+			<tr>
+				<td rowspan="2">5</td>
+				<td rowspan="2">Chorizo</td>
+				<td rowspan="2">PCHO</td>
+				<td rowspan="2">9,99 €</td>
+				<td rowspan="2" align="center"><img src="img/chorizo.jpg"
+					width="200" /></td>
+				<td><a href=#>Modifier</a></td>
+
+			</tr>
+			<tr>
+				<td valign="top"><a href=#>Supprimer</a></td>
+			</tr>
+
+			<tr>
+				<td rowspan="2">6</td>
+				<td rowspan="2">4 saisons</td>
+				<td rowspan="2">P4SA</td>
+				<td rowspan="2">9,00 €</td>
+				<td rowspan="2" align="center"><img src="img/4_saisons.jpg"
+					width="200" /></td>
+				<td><a href=#>Modifier</a></td>
+			</tr>
+			<tr>
+				<td valign="top"><a href=#>Supprimer</a></td>
+			</tr>
+		</table>
+
+	</section>
+
+	<br />
+	<br />
+
+	<section id="ajouterPizza">
+		<h1>Ajouter une pizza</h1>
+
+		<div id="formulaire_pizza" align="center">
+			<h3>Veuillez entrer les infos sur votre nouvelle pizza</h3>
+			<form method="POST" action="script/ajouter_pizza.php">
+			<label for ="nom">Nom de la pizza</label> &emsp; &emsp; &emsp; &emsp;<input type="text" name="nom" />
+			<br/>
+			<br/>
+			<label for ="code">Code associé (4 caractères) </label> &nbsp; <input type="text" maxlength="4" name="code" />
+			<br/>
+			<br/>
+			<label for ="prix">Prix </label> &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;<input type="text" name="prix" />
+			<br/>
+			<br/>
+			<label for ="image">Envie d'ajouter votre photo ? </label><input type="file" name="image" />
+			<br/>
+			<br/>
+			<input type="submit" value="Valider" /> 
+			</form>
+
+		</div>
+
+	</section>
+
+
+	<br />
+	<br />
+
+	<section id="modifPizza">
+		<h1>Modifier ou supprimer une Pizza</h1>
+		
+			<h3>Veuillez sélectionner la pizza que vous souhaitez modifier ou supprimer</h3>
+			<select>
+			<option>Reine</option>
+			<option>Regina </option>
+			<option>Napolitaine </option>
+			<option>4 Fromages </option>
+			<option>Chorizo </option>
+			<option>4 saisons </option>
+			</select>
+
+	</section>
+
+
+	<br />
+	<br />
+	<a href="Pizzeria.html">Retour à l'accueil</a>
+
+
+</body>
+</html>
+

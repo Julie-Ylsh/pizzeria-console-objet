@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Julie's Pizza - liste commandes</title>
+</head>
+
+<body>
+
+	<header>
+
+		<h1>Liste des commandes</h1>
+		<a href="#ajouterClient">Veuillez cliquer ici pour ajouter un
+			nouveau client</a> <br /> <br />
+
+	</header>
+	<table>
+
+		<tr>
+			<td width="30"><b>Id.</b></td>
+			<td width="70"><b>Numéro</b></td>
+			<td width="90"><b>Date</b></td>
+			<td align="left" width="150"><b>Client</b></td>
+			<td align="left" width="150"><b>Livreur</b></td>
+
+		</tr>
+
+		<tr>
+			<td>1</td>
+			<td>1</td>
+			<td>2016-05-09</td>
+			<td>ARMANI Sophie</td>
+			<td>ARMAND Lionel</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+
+		<tr>
+			<td>2</td>
+			<td>2</td>
+			<td>2016-05-09</td>
+			<td>BERURIER Laurent</td>
+			<td>ARMAND Lionel</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>3</td>
+			<td>2016-05-10</td>
+			<td>DENIS Sylvain</td>
+			<td>ARMAND Lionel</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>4</td>
+			<td>2016-05-11</td>
+			<td>ARMANI Sophie</td>
+			<td>JOURNEE Marguerite</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>5</td>
+			<td>2016-05-12</td>
+			<td>FERNIOT Michelle</td>
+			<td>JOURNEE Marguerite</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+
+		<tr>
+			<td>6</td>
+			<td>4</td>
+			<td>2016-05-13</td>
+			<td>LOPERT Nikos</td>
+			<td>JOURNEE Marguerite</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>6</td>
+			<td>2016-05-14</td>
+			<td>ARMANI Sophie</td>
+			<td>ARMAND Lionel</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>8</td>
+			<td>7</td>
+			<td>2016-05-10</td>
+			<td>LOPERT Nikos</td>
+			<td>SPIDE Arthur</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+
+	</table>
+
+
+	<section id="#ajouterClient">
+		<h1>Ajouter une commande</h1>
+
+		<div id="formulaire_pizza" align="center">
+			<h3>Veuillez entrer les infos sur votre commande</h3>
+			<form method="POST" action="script/ajouter_commande.php">
+				<label for="numéroCommande">Numéro de la commande</label>&emsp;<input
+					type="text" name="numéroCommande" /> 
+					<br /> 
+					<br /> 
+					<label for="dateCommande" >Date</label>&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; &nbsp; <input type="text" name="dateCommande" placeholder="aaaa-mm-jj" /> 
+					<br /> 
+					<br /> 
+					<label for="livreur">Livreur </label> &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp; &nbsp;<select name="livreur" >
+						<option>Lionel ARMAND</option>
+						<option>Marguerite JOURNEE</option>
+						<option>Arthur SPIDE</option>
+						</select> 
+					<br /> 
+					<br /> 
+					<label for="clientCommande">Client </label> &emsp;&emsp;&emsp;&emsp;&emsp; &nbsp;&nbsp; &nbsp;<select name="livreur" >
+						<option>Sophie ARMANI</option>
+						<option>Laurent BERURIER </option>
+						<option>Sylvain DENIS</option>
+						<option>Michelle FERNIOT </option>
+						<option>Perrine MILLOT </option>
+						<option>Mélanie RESTRI</option>
+						</select> 
+					<br />	
+					<br /> 
+					<input type="submit" value="Valider" />
+			</form>
+
+		</div>
+
+	</section>
+
+	<a href="Pizzeria.html">Retour à l'accueil</a>
+
+
+</body>
+</html>
+
+ 
+
+			
+ 

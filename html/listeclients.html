@@ -1,0 +1,128 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Julie's Pizza - liste clients</title>
+</head>
+
+<body>
+
+	<header>
+
+		<h1>Liste des clients</h1>
+		<a href="#ajouterClient">Veuillez cliquer ici pour ajouter un nouveau client</a> <br /> <br /> 
+
+	</header>
+	<table>
+
+		<tr>
+			<td width="30"><b>Id.</b></td>
+			<td align="left" width="150"><b>NOM</b></td>
+			<td width="100"><b>Prénom</b></td>
+			<td width="120"><b>Ville</b></td>
+			<td width="40" align="center"><b>Age</b></td>
+		
+		</tr>
+
+		<tr>
+			<td>1</td>
+			<td>ARMANI</td>
+			<td>Sophie</td>
+			<td>Nantes</td>
+			<td align="center">25</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+
+		<tr>
+			<td>2</td>
+			<td>BERURIER</td>
+			<td>Laurent</td>
+			<td>Saint-Herblain</td>
+			<td align="center">30</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>DENIS</td>
+			<td>Sylvain</td>
+			<td>Vannes</td>
+			<td align="center">23</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>FERNIOT</td>
+			<td>Michelle</td>
+			<td>Lorient</td>
+			<td align="center">45</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>LOPERT</td>
+			<td>Nikos</td>
+			<td>Paris</td>
+			<td align="center">42
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		
+		<tr>
+			<td>6</td>
+			<td>MILLOT</td>
+			<td>Perrine</td>
+			<td>Brest</td>
+			<td align="center">22</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td>7</td>
+			<td>RESTRI</td>
+			<td>Mélanie</td>
+			<td>Strasbourg</td>
+			<td align="center">36</td>
+			<td><a href=#>Modifier</a></td>
+			<td><a href=#>Supprimer</a></td>
+		</tr>
+		<tr>
+			<td colspan="4" align="right"><b>Moy.</b></td>
+			<td align="center"><b>32</b></td>
+		</tr>
+	</table>
+	
+	<section id="#ajouterClient">
+		<h1>Ajouter un client</h1>
+
+		<div id="formulaire_pizza" align="center">
+			<h3>Veuillez entrer les infos sur votre nouveau client</h3>
+			<form method="POST" action="script/ajouter_client.php" >
+			<label for ="nomClient">Nom du client</label> &emsp; &emsp;<input type="text" name="nomClient" />
+			<br/>
+			<br/>
+			<label for ="prenomClient">Prénom du Client </label> &nbsp; &nbsp; <input type="text" name="prenomClient" />
+			<br/>
+			<br/>
+			<label for ="villeClient">Ville de résidence </label> &nbsp; &nbsp;<input type="text" name="villeClient" />
+			<br/>
+			<br/>
+			<label for ="age">Age </label> &emsp; &emsp; &emsp; &emsp; &nbsp;&nbsp; &nbsp;&nbsp;<input type="text" name="age" />
+			<br/>
+			<br/>
+			<input type="submit" value="Valider" /> 
+			</form>
+
+		</div>
+
+	</section>
+	
+	<a href="Pizzeria.html">Retour à l'accueil</a>
+
+
+</body>
+</html>
